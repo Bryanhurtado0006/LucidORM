@@ -1,0 +1,11 @@
+C:\proyectos_Adonis\Lucid\Lucia>npm i @adonisjs/lucid
+
+C:\proyectos_Adonis\Lucid\Lucia>npm i --save-dev @types/pg
+
+C:\proyectos_Adonis\Lucid\Lucia>node ace configure @adonisjs/lucid
+
+
+node ace make:model Vehiculo -m
+
+
+C:\proyectos_Adonis\Lucid\Lucia>node ace migration:run Ejecuta la migracion, crea en la base de datos
