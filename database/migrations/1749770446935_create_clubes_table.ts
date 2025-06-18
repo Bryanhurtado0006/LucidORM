@@ -5,7 +5,21 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
+      table.increments('CodClub')
+      table.string('club')
+      table.string('nombre').notNullable()//obligatoriedad
+      table.string('direccion').notNullable()
+      table.string('provincia')
+      table.string('CosPostal')
+      table.string('TLfno')
+      table.string('colores')
+      table.string('himno')
+      table.string('fax')
+      table.string('añoFundacion')
+      table.string('presupuesto')
+      table.string('presidente')
+      table.string('vicepresidente')
+      
 
       table.timestamp('created_at')
       table.timestamp('updated_at')
