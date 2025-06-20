@@ -2,7 +2,7 @@
 import Clube from "../models/clube.js";
 
 export default class ClubService{
-    async crear(data:<Clube>){
+    async crear(data: Partial<Clube>){
         return await Clube.create(data)
     }
 

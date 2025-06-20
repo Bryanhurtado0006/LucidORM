@@ -1,6 +1,11 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
-import { HasMany } from '@adonisjs/lucid/build/src/types/relations'
+import { BaseModel, column, belongsTo } from '@adonisjs/lucid/orm'
+import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+
+
+
+import Clube from './clube.js'
+
 //CONECTAR LA BASE DE DATOS CON MI PROYECTO BACKEND 
 export default class Estadio extends BaseModel {
   @column({ isPrimary: true })
@@ -31,6 +36,9 @@ export default class Estadio extends BaseModel {
   @column()
   declare inauguracion:Date
 
+   @column()
+  declare cod_club: number 
+
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime
 
@@ -38,6 +46,7 @@ export default class Estadio extends BaseModel {
   declare updatedAt: DateTime
 
   //relacion hasmany
-  @hasMany(() => Estadio)
-  declare estadio:HasMany<typeof Estadio>
+  @belongsTo(() => Clube, { foreignKey: 'cod_club' })
+declare club: BelongsTo<typeof Clube>
+
 }

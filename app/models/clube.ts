@@ -1,6 +1,11 @@
 import { DateTime } from 'luxon'
-import { BaseModel, column } from '@adonisjs/lucid/orm'
-import { BelongsTo } from '@adonisjs/lucid/build/src/types/relations'
+import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
+import type { HasMany } from '@adonisjs/lucid/types/relations'
+
+import Estadio from './estadio.js'
+import Jugadore from './jugadore.js'
+import Entrenadore from './entrenadore.js'
+
 
 export default class Clube extends BaseModel {
   @column({ isPrimary: true })
@@ -30,7 +35,7 @@ export default class Clube extends BaseModel {
   declare himno: string
 
   @column()
-  declare : string
+  declare fax: string
 
   @column()
   declare añoFundacion: number
@@ -52,6 +57,26 @@ export default class Clube extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   declare updatedAt: DateTime
 
-  @belongsTO(()=> Clube)
-  declare clubes:BelongsTo<typeof Clube>
+ /* @belongsTo(()=> Clube)
+  declare clubes:BelongsTo<typeof Clube>*/
+
+  //estadios
+
+  @hasMany(() => Estadio, {
+    foreignKey: 'cod_club',
+  })
+  declare estadios: HasMany<typeof Estadio>
+
+  //jugadores
+  @hasMany(() => Jugadore, {
+  foreignKey: 'cod_club',
+})
+declare jugadores: HasMany<typeof Jugadore>
+
+//emtrenadores 
+@hasMany(() => Entrenadore, {
+  foreignKey: 'cod_club',
+})
+declare entrenadores: HasMany<typeof Entrenadore>
+
 }

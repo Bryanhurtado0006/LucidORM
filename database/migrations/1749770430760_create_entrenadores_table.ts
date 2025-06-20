@@ -5,7 +5,17 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('id')
+      table.increments('CodEntrenador')
+      table.string('nombre')
+      table.string('experiencia')
+      table.string('nacionalidad')
+
+      table
+        .integer('cod_club')
+        .unsigned()
+        .references('CodClub')
+        .inTable('clubes')
+        .onDelete('CASCADE')
 
       table.timestamp('created_at')
       table.timestamp('updated_at')

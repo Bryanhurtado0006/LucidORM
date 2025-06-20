@@ -1,5 +1,5 @@
 import { data } from "react-router-dom";
-import ClubService from "../service/ClubService";
+import ClubService from "../service/ClubService.ts";
 import { error } from "console";
 
 

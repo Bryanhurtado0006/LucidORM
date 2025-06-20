@@ -1,5 +1,5 @@
 import Route from '@adonisjs/core/services/router'
-import ClubController from "../../app/controllers/ClubController";
+import ClubController from "../../app/controllers/ClubController.js";
 
 const auth = new ClubController()
 Route.post('/club', auth.crearClub)
