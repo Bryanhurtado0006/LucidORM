@@ -14,7 +14,7 @@ class PaisService{
     async listarId(cod_pais){
         return await Paise.query().where('cod_pais',cod_pais)
     }
-    async actualizar(cod_pais:number, datos:{nombre_pais, comunitario}) {
+    async actualizar(cod_pais:number, datos:{nombre_pais:string, comunitario:string}) {
     const lista = await Paise.query().where('cod_pais', cod_pais)
     if(lista){
         lista.nombre_pais=datos.nombre_pais;
@@ -23,14 +23,25 @@ class PaisService{
     await lista.save()
     return lista
 }
-/*
-async actualizar(cod_pais, datos) {
-    const lista = await Paise.query().where('cod_pais', cod_pais).firstOrFail()
 
-    lista.merge(datos)
-    await lista.save()
-    return lista
+async eliminar(cod_pais:number){
+    const encontrado=await Paise.find(cod_pais)
+    if (encontrado){
+
+        await encontrado.delete()
+        return "Borrau"
+
+    }else{
+        return "No borrau"
+    }
 }
-*/
+
+async conteo(){
+    const res = await Paise.query().count("* as conteo")
+    return res[0].$extras.conteo
+}
+
+
+
 }
 export default PaisService;

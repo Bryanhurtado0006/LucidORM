@@ -5,4 +5,6 @@ const auth = new ClubController()
 
 Route.post('/club', auth.crearClub)
 Route.get('/club', auth.listarClub)
-Route.get('/club/id', auth.listarClubId)
+Route.get('/club/:cod_club', auth.listarClubId)
+Route.put('/club/:cod_club',auth.actualizar)
+Route.get('/conteoClub',auth.contarClub)

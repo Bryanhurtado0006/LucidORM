@@ -49,6 +49,46 @@ class ClubController {
       return response.status(500).json({ error: error.message });
     }
   }
+
+  async actualizar({params,request,response}){
+    try{
+      const cod_club=params.cod_club
+      const dataa = request.only([ 
+        "nombre",
+        "direccion",
+        "poblacion",
+        "provincia",
+        "cos_postal",
+        "telefono",
+        "colores",
+        "himno",
+        "fax",
+        "anioFundacion",
+        "presupuesto",
+        "presidente",
+        "vicepresidente",
+      ]); 
+      const actualizado = await clubServices.actualizar(cod_club,dataa);
+      return response.json({ msj: "Club actualizado", datos: actualizado });
+
+    } catch (error) {
+    return response.status(500).json({ error: error.message });
+  }
+  }
+
+
+
+   async contarClub({response}){
+        try{
+           const resultado=await clubServices.conteo()
+           return response.json({msj:resultado})
+
+        }catch(error){
+            return response.json({error:error.message})
+        }
+    }
+
+
 }
 
 export default ClubController;

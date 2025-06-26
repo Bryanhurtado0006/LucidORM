@@ -26,4 +26,9 @@ export default class EstadioService {
     const estadio = await Estadio.findOrFail(cod_estadios)
     return await estadio.delete()
   }
+
+ async conteo(){
+    const res =await Estadio.query().count("* as conteo")
+    return res[0].$extras.conteo}
+
 }

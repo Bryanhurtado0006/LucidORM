@@ -2,7 +2,7 @@ import {Client} from 'pg'
 
 const db_clubes=new Client({
     host:'localhost',
-    port:5433,
+    port:5434,
     user:'postgres',
     password:'root',
     database:'db_clubes'

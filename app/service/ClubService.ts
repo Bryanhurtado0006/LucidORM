@@ -22,6 +22,10 @@ export default class ClubService {
 
   async eliminar(cod_club) {
     const resp = await Clube.findByOrFail(cod_club);
-    return await resp.delete();
-  }
+    return await resp.delete();}
+
+
+  async conteo(){
+    const res =await Clube.query().count("* as conteo")
+    return res[0].$extras.conteo}
 }

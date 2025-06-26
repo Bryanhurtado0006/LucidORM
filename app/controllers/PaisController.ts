@@ -1,3 +1,4 @@
+import ForceJsonResponseMiddleware from "app/middleware/force_json_response_middleware.js";
 import PaisService from "../service/PaisService.ts";
 //instancia
 const paisservice = new PaisService()
@@ -14,7 +15,7 @@ class PaisController{
             return response.json({error:error.message})
         }
     }
-    async listarPais({request,response}){
+    async listarPais({response}){
         try{
             const list = await paisservice.listar()
             return response.json({msj:list})
@@ -24,7 +25,7 @@ class PaisController{
         }
     }
 
-    async listarPaisId({params,request,response}){
+    async listarPaisId({params,response}){
         try{
             const cod_pais=params.cod_pais
             const listaID=await paisservice.listarId(cod_pais)
@@ -46,6 +47,28 @@ class PaisController{
 
         }
 
+    }
+
+
+    async eliminarPais({params,response}){
+        try{
+            const cod_pais=params.cod_pais
+            const res=await paisservice.eliminar(cod_pais)
+            return response.json({msj:res})
+
+        }catch(error){
+            return response.json({error:error.message})
+        }
+    }
+
+    async contarPais({response}){
+        try{
+           const resultado=await paisservice.conteo()
+           return response.json({msj:resultado})
+
+        }catch(error){
+            return response.json({error:error.message})
+        }
     }
 }
 export default PaisController;

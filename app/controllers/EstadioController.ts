@@ -78,4 +78,15 @@ export default class EstadioController {
       return response.status(500).json({ error: error.message })
     }
   }
+
+
+    async contarestadio({response}){
+        try{
+           const resultado=await estadioService.conteo()
+           return response.json({msj:resultado})
+
+        }catch(error){
+            return response.json({error:error.message})
+        }
+    }
 }
