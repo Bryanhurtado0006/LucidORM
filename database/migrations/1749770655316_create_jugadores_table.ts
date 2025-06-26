@@ -15,7 +15,7 @@ export default class extends BaseSchema {
       table
         .integer('cod_club') //foranea
         .unsigned()
-        .references('CodClub')
+        .references('cod_club')
         .inTable('clubes')
         .onDelete('CASCADE')
 

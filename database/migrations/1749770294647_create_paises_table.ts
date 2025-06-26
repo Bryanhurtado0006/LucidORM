@@ -5,10 +5,12 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('CodPais').primary()
-      table.string('NombrePais').notNullable() 
-      table.boolean('Comunitario').notNullable().defaultTo(false)
-      table.timestamps(true)
+      table.increments('cod_pais') // PK
+      table.string('nombre_pais')
+      table.boolean('comunitario')
+
+      table.timestamp('created_at').defaultTo(this.now())
+      table.timestamp('updated_at').defaultTo(this.now())
     })
   }
 

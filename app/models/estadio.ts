@@ -4,12 +4,12 @@ import type { BelongsTo } from '@adonisjs/lucid/types/relations'
 
 
 
-import Clube from './clube.js'
+import Clube from './clube.ts'
 
 //CONECTAR LA BASE DE DATOS CON MI PROYECTO BACKEND 
 export default class Estadio extends BaseModel {
   @column({ isPrimary: true })
-  declare CodEstadios: number
+  declare cod_estadios: number
 
 
   @column()

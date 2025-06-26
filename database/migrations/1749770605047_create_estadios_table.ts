@@ -5,7 +5,7 @@ export default class extends BaseSchema {
 
   async up() {
     this.schema.createTable(this.tableName, (table) => {
-      table.increments('CodEstadios')
+      table.increments('cod_estadios')
       table.string('estadio').notNullable()
       table.string('direccion').notNullable()
       table.string('cod_postal')
@@ -15,9 +15,9 @@ export default class extends BaseSchema {
       table.integer('sentados')
       table.date('inauguracion')
 //FORANEA
-      table.integer('CodClub')
+      table.integer('cod_club')
       .notNullable()
-      .references('CodClub')
+      .references('cod_club')
       .inTable('clubes')
       .onDelete('CASCADE')
       .onUpdate('CASCADE')

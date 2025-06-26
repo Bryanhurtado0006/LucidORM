@@ -10,9 +10,9 @@ export default class extends BaseSchema {
       
       // Clave foránea hacia la tabla países
       table
-        .integer('CodPais')
+        .integer('cod_pais')
         .unsigned()
-        .references('CodPais')
+        .references('cod_pais')
         .inTable('paises')
         .onDelete('CASCADE')
 

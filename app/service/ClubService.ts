@@ -1,29 +1,27 @@
-/* consultas referenciadas al modelo utlizando ORM luci  */
-import Clube from "../models/clube.js";
+// ClubService.ts
+import Clube from "../models/clube.ts";
 
-export default class ClubService{
-    async crear(data: Partial<Clube>){
-        return await Clube.create(data)
-    }
+export default class ClubService {
+  async crear(data) {
+    return await Clube.create(data);
+  }
 
-    async listar(){
-        return await Clube.query()
-    }
+  async listar() {
+    return await Clube.query();
+  }
 
-            /*
+  async buscarId(cod_club) {
+    return await Clube.query().where('cod_club', cod_club); 
+  }
 
-      async  buscarId(id:integer){
-           return await Clube.query().where('CodClub',id)
-        }
+  async actualizar(cod_club, data) {
+    const resp = await Clube.findByOrFail(cod_club); 
+    resp.merge(data);
+    return await resp.save();
+  }
 
-        actualizar(id:integer, data<Clube>){
-            
-            const resp = await Clube.findByOrFail(id)
-            return await resp.merge(data).save()
-        }
-
-        async eliminar(id:integer, data){
-            const resp = await Clube.findByOrFail(id)
-            return await resp.delete()
-                }*/
+  async eliminar(cod_club) {
+    const resp = await Clube.findByOrFail(cod_club);
+    return await resp.delete();
+  }
 }
